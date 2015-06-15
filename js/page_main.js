@@ -21,7 +21,6 @@ function dealWaitJson(jsonWaitStr) {
 
         //获取条数
         count = Obj.length;
-
         //获取信息
         for (var i = 0; i < count; i++) {
             stu_num[i] = Obj[i].stu_id;//获取学号
@@ -172,9 +171,9 @@ function curStuInfo() {
         success: function (data) {
             var curStu = "";
             var Obj = eval('(' + data + ')');
-            for (var i = 0; i < Obj.length; i++) {
-                curStu += '<br><br><br><h1>现在由' + Obj[i].stu_name + '同学做答辩！</h1><br/><h2>主题为' + Obj[i].stu_topic + '</h2>';
-            }
+            if(Obj.length==1)
+            curStu += '<br><br><br><h1>现在由' + Obj[0].stu_name + '同学做答辩！</h1><br/><h2>主题为' + Obj[0].stu_topic + '</h2>';
+            
             $("#cur-stu-info").html(curStu);
         },
         //调用出错执行的函数
@@ -296,9 +295,8 @@ function showInfo() {
             //alert(data)
             var curStu = "";
             var Obj = eval('(' + data + ')');
-            for (var i = 0; i < Obj.length; i++) {
-                curStu += '<br><br><br><h1>现在由<span id="show-stuid">' + Obj[i].stu_id + '</span>' + Obj[i].stu_name + '同学做答辩！</h1><br/><h2>主题为' + Obj[i].stu_topic + '</h2>';
-            }
+            if (Obj.length == 1)
+                curStu += '<br><br><br><h1>现在由<span id="show-stuid">' + Obj[0].stu_id + '</span>' + Obj[0].stu_name + '同学做答辩！</h1><br/><h2>主题为' + Obj[0].stu_topic + '</h2>';
             $("#cur-stu-info").html(curStu);
         },
         //调用出错执行的函数
