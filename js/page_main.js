@@ -55,7 +55,7 @@ function canContinue() {
                 $("#btn-begin").attr("disabled", false);
             }
         },
-        error: function () { }
+        error: function () { alert('cuo')}
     });
 }
 //开始/停止 切换

@@ -30,10 +30,12 @@ public class Method
     //判断当前两分数是否为空
     public static string canContinue(HttpContext context)
     {
+        string flag = "";
         string id = context.Request.Form["id"];
         string sql = "SELECT canContinue FROM Reply WHERE id = " + id;
         DataSet ds = SqlDb.ExecuteSelectSql(sql);
-        string flag = ds.Tables[0].Rows[0][0].ToString();
+        if (ds.Tables[0].Rows.Count > 0)
+            flag = ds.Tables[0].Rows[0][0].ToString();
         return flag;  
     }
     //提交分数
